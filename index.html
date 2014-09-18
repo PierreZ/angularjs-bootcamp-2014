@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en" ng-app>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AngularJS</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<script src="js/angular.min.js"></script>
+		<script src="js/controller.js"></script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body ng-controller="MainCtrl">
+		<nav>
+		<img style="width:350px;margin-left:50px;margin-top:30px;" src="img/isen.png">
+		<img src="img/finistgdg.png" style="width: 150px;float:right; height: auto; max-height: none; max-width: none; border: none;-moz-box-shadow:none;-webkit-box-shadow:none;background-color:#F0F0F0;margin-right:50px;margin-top:30px;">
+
+		</nav>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<img src="img/angularjs.png" style="border: none;-moz-box-shadow:none;-webkit-box-shadow:none;background:none">
+					<p>
+						<small>Created by <a href="http://pierrezemb.fr">Pierre Zemb</a> / <a href="http://twitter.com/PierreZ">@PierreZ</a></small>
+					</p>
+				</section>
+
+
+				<section>
+					<h2>+Me</h2>
+					<div style="text-align=center;">
+					<img class="image" src="img/myself.png" style="width: 300px; height: auto; max-height: none; max-width: none; border: none;-moz-box-shadow:none;-webkit-box-shadow:none;background:none">
+					</div>
+					<p>
+						<ul>
+							<li>French engineer student at ISEN Brest</li>
+							<li>CIR student</li>
+							<li>Part-time internship at Crédit Mutuel Arkéa</li>
+						</ul>
+					</p>
+				</section>
+
+				<section>
+					<h2>Just to clarify</h2>
+					<p>
+						I'm just a student!
+					</p>
+					<img src="img/boba.gif" style="-moz-box-shadow:none;-webkit-box-shadow:none;">
+				</section>
+
+				<section>
+					<h2>It's time for you to work!</h2>
+					<img src="img/fuck.jpg" style="-moz-box-shadow:none;-webkit-box-shadow:none;">
+				</section>
+				<section>
+					<h2>The goal?</h2>
+					<p>Create a Web-based app to show students with AngularJS</p>		
+					<img src="img/perpetual.gif" style="-moz-box-shadow:none;-webkit-box-shadow:none;">
+				</section>
+				<section>
+					<h2>Step 0</h2>
+					<ul>
+						<li>Download Chrome(or Chromium) and use Batarang(Chrome Extensions)</li>
+						<li>Download resources at <a href="www.github.com/PierreZ/bootcamp-angular-isen">github.com/PierreZ/bootcamp-angular-isen</a></li>
+						<li>The developer guide is available at <a href="www.docs.angularjs.org">docs.angularjs.org</a></li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>Step 1</h2>
+						<p>Enable Angular</p>
+						</section>
+						<section>
+						<ul>
+							<li>add ng-app</li>
+							<li>add a controller</li>
+						</ul>
+					</section>
+					<section>
+					<p>index.html</p>
+						<pre><code>
+&lt;html lang="en" ng-app='studentApp'&gt;
+...
+&lt;body ng-controller='Ctrl'&gt;
+				</code></pre>
+				<p>app.js</p>
+						<pre><code>
+var myApp = angular.module('studentApp', []);
+myApp.controller('Ctrl', function () {
+
+});
+				</code></pre>
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<h2>Step 2</h2>
+						<p>Try the double data binding</p>
+					</section>
+					<section>
+						<ul>
+							<li>create a object with the right attributes...</li>
+							<li>...and show it</li>
+						</ul>
+					</section>
+					<section>
+					<p>index.html</p>
+						<pre><code>
+&lt;div class="col-lg-4 student"&gt;
+&lt;span class="glyphicon glyphicon-remove"&gt;&lt;/span&gt;
+&lt;h2&gt;&#123;&#123;qwerty.name&#125;&#125;&lt;/h2&gt;
+&lt;p&gt;&#123;&#123;qwerty.class&#125;&#125;&lt;/p&gt;
+&lt;p&gt;&#123;&#123;qwerty.text&#125;&#125;&lt;/p&gt;
+&lt;p&gt;&lt;a class="btn btn-default" href="#" role="button"&gt;View details &raquo;&lt;/a&gt;&lt;/p&gt;
+					</code></pre>
+						<p>app.js</p>
+						<pre><code>
+var myApp = angular.module('studentApp', []);
+myApp.controller('Ctrl', function ($scope) {
+	$scope.student = { 
+		"name": "Pierre Zemb",
+		"class" : "CIR3" ,
+		"text" : "Seems like a nice guy"
+	}
+});
+					</code></pre>
+					</section>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Step 3</h2>
+					<p>What about more students?</p>
+				</section>
+				<section>
+					<ul>
+						<li>Create an array of students</li>
+						<li>Loop into it with ng-repeat</li>
+					</ul>
+				</section>
+				<section>
+				<p>app.js</p>
+						<pre><code>
+$scope.students = new Array();
+$scope.students.push({ 
+	"name": "Pierre Zemb",
+	"class" : "CIR3" ,
+	"text" : "Seems like a nice guy"
+});
+	$scope.students.push({ 
+	"name": "Brendan",
+	"class" : "CIR1" ,
+	"text" : "Seems like a weird guy"
+});
+					</code></pre>
+					<p>index.html</p>
+						<pre><code>
+&lt;div class="col-lg-4 student" ng-repeat="student in students"&gt;
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Step 4</h2>
+					<p>What about searching?</p>
+				</section>
+				<section>
+					<ul>
+						<li>create an input and bind it with ng-model</li>
+						<li>filter your ng-repeat with it...</li>
+					</ul>
+				</section>
+				<section>
+					<p>index.html</p>
+						<pre><code>
+&lt;/ul&gt;
+&lt;div class="row"&gt;
+  &lt;input class="search-query" type="text" ng-model="search" 
+  	placeholder="Search a student"&gt;&lt;/div&gt;
+&lt;/div&gt;
+...
+&lt;div class="col-lg-4 student" 
+	ng-repeat="student in students | filter:search-query"&gt;
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Step 5</h2>
+					<p>Remove a student</p>
+				</section>
+				<section>
+					<ul>
+						<li>Add ng-click to the span-delete</li>
+						<li>Create an function to remove the student</li>
+					</ul>
+				</section>
+				<section>
+					<p>index.html</p>
+						<pre><code>
+&lt;span ng-click="remove(student.name)" 
+	class="glyphicon glyphicon-remove"&gt;&lt;/span&gt;
+					</code></pre>
+					<p>app.js</p>
+					<pre><code>
+$scope.remove = function (name){
+	angular.forEach($scope.students, function(student,key) {
+  		if (student.name==name) {
+  			$scope.students.splice(key,1);
+  		};
+	});
+};
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Step 6</h2>
+					<p>Add a student</p>
+				</section>
+				<section>
+					<ul>
+						<li>Bind form to student using ng-model</li>
+						<li>Use ng-click</li>
+					</ul>
+				</section>
+				<section>
+				<p>app.js</p>
+					<pre>
+						<code>
+$scope.addStudent = function (){
+	$scope.students.push($scope.new_student);
+};
+						</code>
+					</pre>
+					<p>index.html</p>
+					<pre>
+						<code>
+&lt;input type="text" name="nom" id="nom" ng-model="new_student.name"/&gt;
+&lt;input type="class" name="class" id="class" ng-model="new_student.class"/&gt;
+&lt;input type="text" name="text" id="text" ng-model="new_student.text"/&gt;
+&lt;button type="button" class="btn btn-default navbar-btn"
+	ng-click="addStudent()"&gt;Add&lt;/button&gt;
+						</code>
+					</pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Step 7</h2>
+					<p>What about tabs?</p>
+				</section>
+				<section>
+					<ul>
+						<li>Create a array containing the classes</li>
+						<li>Use it to generate the tabs</li>
+						<li>Show only students matching the selected class</li>
+					</ul>
+				</section>
+				<section>
+					<p>index.html</p>
+					<pre>
+						<code>
+&lt;ul class="nav nav-tabs"&gt;
+	&lt;li  ng-class="{active: class == selected}"
+			ng-repeat="class in classes"
+			ng-click="setSelected(class)"&gt;&lt;a href="#"&gt;{{class}}&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+...
+&lt;div ng-if="student.class == selected || selected == 'All' " 
+	class="col-lg-4 student"
+	ng-repeat="student in students | filter:search | orderBy:'class'"&gt;
+						</code>
+					</pre>
+					</section>
+					<section>
+					<p>app.js</p>
+					<pre>
+						<code>
+$scope.classes = new Array();
+$scope.classes.push("All");
+$scope.setSelected = function (select){
+	$scope.selected = select;
+}
+						</code>
+					</pre>
+				</section>
+				</section>
+				<section>
+					<h1>THE END</h1>
+					<h3>Questions?</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
